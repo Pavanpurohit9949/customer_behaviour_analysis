@@ -39,7 +39,7 @@ Retailers need to understand how customers shop — what drives repeat purchases
 - **Target high-revenue segments** — Young Adults and Express-shipping customers show stronger spend
 
 ## Dashboard Preview
-![Customer Behaviour Dashboard](images/dashboard_overview.png)
+![Customer Behaviour Dashboard](images/Dashboard_overview.png)
 
 The dashboard includes filters for Subscription Status, Gender, Category, and Shipping Type, with KPIs for customer count, average purchase amount, and average review rating, plus breakdowns of revenue/sales by category and age group.
 
