@@ -1,52 +1,63 @@
-# Customer Behaviour Analysis
+# Customer Shopping Behaviour Analysis
 
 ## Overview
-Analysis of customer purchasing behaviour to identify trends, segment customers, and generate insights that support business decision-making. The project covers the full workflow from raw data to an interactive dashboard.
+Analysis of 3,900 customer shopping transactions to uncover purchasing patterns, spending trends, and customer segments — using SQL for querying, Python for exploration, and Power BI for visualization.
 
 ## Business Problem
-Understanding how customers behave — what they buy, how often, and how much they spend — helps businesses improve retention, target marketing, and increase revenue. This project explores those patterns using a real-world style retail dataset.
+Retailers need to understand how customers shop — what drives repeat purchases, which segments spend the most, and where revenue is concentrated — to make better marketing and inventory decisions. This project explores those questions using a customer shopping dataset (3,900 rows, 18 columns).
 
 ## Tools Used
-- SQL — data querying and analysis
-- Python (Jupyter Notebook) — data cleaning and exploration
+- SQL (PostgreSQL) — data querying and analysis
+- Python (Jupyter Notebook) — data cleaning, feature engineering
 - Power BI — interactive dashboard
-- PDF reports — summary of findings
 
 ## Approach
-1. **Data Cleaning** — Handled missing values, fixed data types, removed duplicates
-2. **Exploratory Analysis** — Analyzed customer segments, purchase frequency, and spending patterns using SQL and Python
-3. **Dashboard** — Built an interactive Power BI dashboard to visualize key metrics
-4. **Reporting** — Summarized findings in a PDF report
+1. **Data Cleaning & Feature Engineering** — `Customer_Shopping_Behaviour_Analysis.ipynb`
+   - Imputed 37 missing `Review Rating` values using category-level medians
+   - Standardized columns to snake_case
+   - Engineered `age_group` and `purchase_frequency_days`
+   - Dropped redundant `promo_code_used` column
+   - Loaded cleaned data into PostgreSQL
+2. **SQL Analysis** — `customer_behaviour.sql`
+3. **Dashboard** — `customer_behaviour_dashboard.pbix`
+4. **Report** — `Customer Shopping Behavior Analysis.pdf`
 
 ## Key Insights
-- *(Add 2-4 bullet points here — e.g. "Top 20% of customers generate X% of revenue")*
-- *(e.g. "Repeat customers spend Y% more per order than first-time buyers")*
-- *(e.g. "Category X has the highest customer retention rate")*
+- **Male customers generated over 2x the revenue of female customers** ($157,890 vs. $75,191), despite a fairly even customer base
+- **80% of customers are "Loyal"** (3,116 of 3,900) based on purchase history, with only 83 classified as brand-new
+- **Subscription status has little effect on individual spend** — subscribers average $59.49 per order vs. $59.87 for non-subscribers — but only 27% of customers are subscribed, leaving revenue upside on the table
+- **Discounting is concentrated in a few categories** — Hats have the highest discount dependency at 50%, followed by Sneakers (49.7%) and Coats (49.1%)
+- **Revenue is broadly even across age groups**, with Young Adults leading slightly ($62,143) and Seniors lowest ($55,763) — no single age segment dominates
+- **Express shipping customers spend more on average** ($60.48) than Standard shipping customers ($58.46)
+- **Gloves, Sandals, and Boots have the highest average review ratings** (3.86, 3.84, 3.82), making them strong candidates to feature in marketing
+
+## Business Recommendations
+- **Boost subscriptions** — promote exclusive perks, since subscribers currently make up only 27% of the customer base
+- **Loyalty programs** — reward repeat buyers to convert "Returning" customers (701) into "Loyal" status
+- **Review discount policy** — high discount-dependency on categories like Hats and Sneakers may be eroding margin
+- **Feature top-rated products** (Gloves, Sandals, Boots) in campaigns
+- **Target high-revenue segments** — Young Adults and Express-shipping customers show stronger spend
 
 ## Dashboard Preview
-*(Add 1-2 screenshots of your Power BI dashboard here)*
+![Customer Behaviour Dashboard](images/dashboard_overview.png)
 
-```
-![Dashboard Overview](images/dashboard_overview.png)
-```
+The dashboard includes filters for Subscription Status, Gender, Category, and Shipping Type, with KPIs for customer count, average purchase amount, and average review rating, plus breakdowns of revenue/sales by category and age group.
 
-## Folder Structure
-```
-customer_behaviour_analysis/
-├── data/               # raw and cleaned datasets
-├── notebooks/          # Jupyter notebook (Python analysis)
-├── sql/                # SQL queries
-├── powerbi/             # Power BI file (.pbix)
-├── images/             # dashboard screenshots
-├── report/             # PDF report
-└── README.md
-```
+## Files in this Repo
+| File | Description |
+|---|---|
+| `Customer_Shopping_Behaviour_Analysis.ipynb` | Python notebook — data cleaning & feature engineering |
+| `customer_behaviour.sql` | SQL queries used for analysis |
+| `customer_behaviour_dashboard.pbix` | Power BI dashboard |
+| `customer_shopping_behavior.csv` | Raw dataset |
+| `images/dashboard_overview.png` | Dashboard screenshot |
+| `Customer Shopping Behavior Analysis.pdf` | Summary report |
 
 ## How to Run
 1. Clone this repository
-2. Open the notebook in `notebooks/` to view the Python cleaning/analysis steps
-3. Run the SQL scripts in `sql/` against the provided dataset
-4. Open the `.pbix` file in Power BI Desktop to explore the dashboard
+2. Open `Customer_Shopping_Behaviour_Analysis.ipynb` to view the Python cleaning/feature engineering steps
+3. Run `customer_behaviour.sql` against the cleaned data (loaded into PostgreSQL/SQL Server)
+4. Open `customer_behaviour_dashboard.pbix` in Power BI Desktop to explore the dashboard
 
 ## Author
 Pavan Purohit
